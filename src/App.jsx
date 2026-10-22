@@ -245,7 +245,7 @@ function TreeView({ people, houses, selectedId, onSelect }) {
         {p.arms || house?.arms ? <img className="node-arms" src={p.arms || house.arms} alt=""/> : <div className="node-arms-placeholder"><Shield size={15}/></div>}
       </button>
       {spouse.length > 0 && <div className="spouse-connector" title="Spouse linked"><Heart size={12}/></div>}
-      {spouse.slice(0,1).map(s => <button key={s.id} className={`tree-node spouse-node ${selectedId === s.id ? 'selected' : ''}`} onClick={() => onSelect(s.id)}><div className="node-top"><Avatar person={s} small/><span className="node-name">{s.name}</span></div><div className="node-title">{s.title || houses.find(h => h.id === s.houseId)?.name || 'Spouse'}</div><div className="node-bottom">{s.birth || 'Date unknown'}</div>{s.arms ? <img className="node-arms" src={s.arms} alt=""/> : <div className="node-arms-placeholder"><Shield size={15}/></div>}</button>}
+      {spouse.slice(0,1).map(s => <button key={s.id} className={`tree-node spouse-node ${selectedId === s.id ? 'selected' : ''}`} onClick={() => onSelect(s.id)}><div className="node-top"><Avatar person={s} small/><span className="node-name">{s.name}</span></div><div className="node-title">{s.title || houses.find(h => h.id === s.houseId)?.name || 'Spouse'}</div><div className="node-bottom">{s.birth || 'Date unknown'}</div>{s.arms ? <img className="node-arms" src={s.arms} alt=""/> : <div className="node-arms-placeholder"><Shield size={15}/></div>}</button>)}
       {kids.length > 0 && <div className="child-count"><Baby size={12}/> {kids.length} child{kids.length > 1 ? 'ren' : ''}</div>}
     </React.Fragment>;
     })}
@@ -316,3 +316,4 @@ function HouseEditor({ initial, onClose, onSave, onImage }) {
 function Modal({ title, subtitle, onClose, children, wide=false }) {
   return <div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}><section className={`modal ${wide?'modal-wide':''}`} role="dialog" aria-modal="true"><div className="modal-head"><div><h2>{title}</h2><p>{subtitle}</p></div><button className="icon-btn" onClick={onClose}><X size={18}/></button></div>{children}</section></div>;
 }
+export default App;
